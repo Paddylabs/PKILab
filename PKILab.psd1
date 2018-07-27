@@ -40,6 +40,7 @@
             Lability_Resource = 'Sub_CAPolicy','Sub_CASetup','Sub_CAConfig'
 
         }
+# Uncomment the below section if you require an additional Enterprise Issuing CA included in the lab.
 
 #        @{
 #            NodeName  = 'SubCA02';
@@ -57,6 +58,7 @@
             Lability_Resource = 'PKI_IIS_Config'
         }
 
+# Uncomment the below section if you would like a Windows 10 Client included in the lab build.
 #        @{
 #            NodeName       = 'CLIENT1';
 #            Role           = 'CLIENT';
