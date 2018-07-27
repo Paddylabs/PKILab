@@ -7,4 +7,6 @@ This lab is based on the Lability PowerShell Module and builds a Windows Server 
 
 I will try and add as much detail to the ReadMe as possible as to what the Lab does, how much of it is Automated via DSC and what steps need to be completed by you.
 
+What it won't cover is the setting up and configuring of Lability.  There are some brilliant blog posts out there on this subject and of course the Lability Repo too. https://github.com/VirtualEngine/Lability
+
 Disclaimer: Feel free to copy and use this for your own purposes but it is a LAB. I am also very much 'standing on the shoulders of giants' when it comes to PowerShell and DSC so every day is a school day for me and you should not view this project as the best way to do this.  I am publishing it to GitHub as a place to store and version control the project for me and if it helps anybody else along the way then happy days.
