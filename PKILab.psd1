@@ -24,13 +24,13 @@
             Role                    = 'DC';
             Lability_ProcessorCount = 2;
         }
-        
+
         @{
             NodeName  = 'ROOTCA01';
             IPAddress = '10.0.0.10';
             Role      = 'ROOTCA';
             Lability_Resource = 'Root_CAPolicy','Root_CASetup','Root_CAConfig'
-            
+
         }
 
         @{
@@ -56,7 +56,7 @@
             Role      = 'WEB';
             Lability_Resource = 'PKI_IIS_Config'
         }
-        
+
 #        @{
 #            NodeName       = 'CLIENT1';
 #            Role           = 'CLIENT';
@@ -64,7 +64,7 @@
 #            Lability_Resource = 'RSAT_2016';
 #            <# Lability_CustomBootStrap = 'Now implemented in the Media's CustomData.CustomBootstrap property #>
 #        }
-        
+
     );
     NonNodeData = @{
         OrganisationName = 'PKILab'
@@ -84,7 +84,7 @@
             );
 
            Resource = @(
-                @{  
+                @{
                     # Resource Identifier. If the resource is to be expanded (ISO or ZIP), it will be expanded into
                     # the \Resources\<Resource Id> folder on the target node.
                     Id = 'RSAT_2016';
@@ -99,7 +99,7 @@
                     # correct or the module will continously try to download the file.
                     # Checksum = '';
 
-                    # If the resource is a .zip or .iso file it can be expanded / decompressed when copied into the node's 
+                    # If the resource is a .zip or .iso file it can be expanded / decompressed when copied into the node's
                     # \Resources\<Resource Id> folder. If no specified this value defaults to false.
                     # Expand = $True;
 
@@ -153,21 +153,21 @@
 
                     }
 
-                
+
                 @{
                     Id = 'PKI_IIS_Config'
                     Filename = 'PKI_IIS_Config.ps1'
                     Uri = 'file://C:\Lability\Resources\PKI\Web\PKI_IIS_Config.ps1'
 
                     }
-                
+
             )
 
             <#
                 If you are generating the .mof files on the host and/or you want Labilty to use the DSC
                 resource versions/modules installed on the physical host, you should remove the 'DSCResource' key.
                 Lability will then "just" copy all local DSC resources.
-            #> 
+            #>
             DSCResource = @(
                 ## Download published version from the PowerShell Gallery
                 @{ Name = 'xComputerManagement'; MinimumVersion = '1.9.0.0'; Provider = 'PSGallery'; }
