@@ -69,7 +69,7 @@ Configuration BasicServerClient {
 
         } #end if IPAddress
 
-        
+
     } #end nodes ALL
 
     node $AllNodes.Where({$_.Role -in 'DC'}).NodeName {
@@ -158,19 +158,19 @@ Configuration BasicServerClient {
             ReplicationScope = 'Forest';
             Ensure           = 'Present';
             DependsOn        = '[xADDomain]ADDomain';
-                     
-        
+
+
         }
 
         xDnsRecord 'PKI' {
-        
+
             Name = 'PKI'
             Zone = 'paddylab.net'
             Type = 'CName'
             Target = 'web01.corp.paddylab.net'
             Ensure = 'present'
             DependsOn = '[xDnsServerADZone]PaddylabZone'
-        
+
         }
 
         xDhcpServerOption 'DhcpScope10_0_0_0_Option' {
@@ -239,12 +239,12 @@ Configuration BasicServerClient {
                 IncludeAllSubFeature = $true;
             }
 
-        
+
     } #end nodes ROOTCA
 
-    
 
-}   
+
+}
 
    node $AllNodes.Where({$_.Role -eq 'WEB'}).NodeName {
 
@@ -257,7 +257,7 @@ Configuration BasicServerClient {
                 Name                 = $feature;
                 IncludeAllSubFeature = $true;
             }
-            
+
             File 'FilesFolder' {
 
             DestinationPath = 'C:\PKI';
@@ -274,7 +274,7 @@ Configuration BasicServerClient {
         }
 
         cNtfsPermissionEntry PermissionSet1 {
-            
+
             Ensure = 'Present'
             Path = 'C:\PKI'
             Principal = "corp\cert publishers"
@@ -292,7 +292,7 @@ Configuration BasicServerClient {
             }
 
 #            cNtfsPermissionEntry PermissionSet2 {
-            
+
 #            Ensure = 'Present'
 #            Path = 'C:\PKI'
 #            Principal = "corp\cert publishers"
@@ -309,13 +309,13 @@ Configuration BasicServerClient {
 #
 #            }
 
-        
+
     } #end nodes WEB
 
-    
 
-}   
- 
+
+}
+
 
 } #end Configuration Example
 
