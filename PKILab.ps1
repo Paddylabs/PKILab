@@ -152,9 +152,9 @@ Configuration BasicServerClient {
             DependsOn     = '[WindowsFeature]DHCP';
         }
 
-        xDnsServerADZone 'PaddylabZone' {
+        xDnsServerADZone 'TestlabZone' {
 
-            Name             = 'paddylab.net';
+            Name             = 'testlab.net';
             ReplicationScope = 'Forest';
             Ensure           = 'Present';
             DependsOn        = '[xADDomain]ADDomain';
@@ -165,18 +165,18 @@ Configuration BasicServerClient {
         xDnsRecord 'PKI' {
 
             Name = 'PKI'
-            Zone = 'paddylab.net'
+            Zone = 'testlab.net'
             Type = 'CName'
-            Target = 'web01.corp.paddylab.net'
+            Target = 'web01.corp.testlab.net'
             Ensure = 'present'
-            DependsOn = '[xDnsServerADZone]PaddylabZone'
+            DependsOn = '[xDnsServerADZone]testlabZone'
 
         }
 
         xDhcpServerOption 'DhcpScope10_0_0_0_Option' {
 
             ScopeID            = '10.0.0.0';
-            DnsDomain          = 'corp.contoso.com';
+            DnsDomain          = 'corp.testlab.com';
             DnsServerIPAddress = '10.0.0.1';
             Router             = '10.0.0.2';
             AddressFamily      = 'IPv4';

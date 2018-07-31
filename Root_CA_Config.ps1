@@ -18,11 +18,11 @@ $crllist = Get-CACrlDistributionPoint; foreach ($crl in $crllist) {Remove-CACrlD
 
 # Adding back the Windows system required CDP with better name
 Write-Host "Adding required Windws system CDP with name of Root CA" -ForegroundColor Green
-Add-CACRLDistributionPoint -Uri C:\Windows\System32\CertSrv\CertEnroll\PADDYLAB-ROOT%8%9.crl -PublishToServer -PublishDeltaToServer -Force
+Add-CACRLDistributionPoint -Uri C:\Windows\System32\CertSrv\CertEnroll\TESTLAB-ROOT%8%9.crl -PublishToServer -PublishDeltaToServer -Force
 
 # Adding the URL of the CRL that will be on all issued certificates.  This needs to be a highly-available publicly accessible URL.  Typing in this URL should prompt your internet browser to download the .crl.
 Write-Host "dding the URL of the CRL that will be on all issued certificates" -ForegroundColor Green
-Add-CACRLDistributionPoint -Uri http://pki.paddylab.net/pki/PADDYLAB-ROOT%8%9.crl -AddToCertificateCDP -AddToFreshestCrl -Force
+Add-CACRLDistributionPoint -Uri http://pki.testlab.net/pki/TESTLAB-ROOT%8%9.crl -AddToCertificateCDP -AddToFreshestCrl -Force
 
 #  Gets all of the AIA paths (but not the default Windows system path) and deletes them.  They are also no good.
 Write-Host "Deleting all the AIA paths except the default Windows system path." -ForegroundColor Green
@@ -30,7 +30,7 @@ Get-CAAuthorityInformationAccess | where {$_.Uri -like '*ldap*' -or $_.Uri -like
 
 # Adding the URL of the AIA file that is on all issued certificates.  This also needs to be a highly-available publicly accessible URL.
 Write-Host "Adding the URL of the AIA file that is on all issued certificates." -ForegroundColor Green
-Add-CAAuthorityInformationAccess -AddToCertificateAia http://pki.paddylab.net/pki/PADDYLAB-ROOT%3%4.crt -Force
+Add-CAAuthorityInformationAccess -AddToCertificateAia http://pki.testlab.net/pki/TESTLAB-ROOT%3%4.crt -Force
 
 # Set additional Settings. These are settings that effect Certificates issued by this CA.
 
