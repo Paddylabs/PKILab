@@ -6,7 +6,7 @@ Policies=InternalPolicy
 
 [InternalPolicy]
 OID=1.1.1.1
-URL=http://pki.paddylab.net/pki/cps.html
+URL=http://pki.testlab.net/pki/cps.html
 
 [Certsrv_Server]
 RenewalKeyLength=4096

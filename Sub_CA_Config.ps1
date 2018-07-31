@@ -18,15 +18,15 @@ $crllist = Get-CACrlDistributionPoint; foreach ($crl in $crllist) {Remove-CACrlD
 
 # Adding back the Windows system required CDP with better name
 Write-Host "Adding required Windws system CDP with name of Sub CA" -ForegroundColor Green
-Add-CACRLDistributionPoint -Uri C:\Windows\System32\CertSrv\CertEnroll\PADDYLAB-ECA%8%9.crl -PublishToServer -PublishDeltaToServer -Force
+Add-CACRLDistributionPoint -Uri C:\Windows\System32\CertSrv\CertEnroll\TESTLAB-ECA%8%9.crl -PublishToServer -PublishDeltaToServer -Force
 
 # Adding webserver file location
 Write-Host "Adding required Windws system CDP with name of Sub CA" -ForegroundColor Green
-Add-CACRLDistributionPoint -Uri file://\\web01.corp.paddylab.net\pki\PADDYLAB-ECA%8%9.crl -PublishToServer -PublishDeltaToServer -Force
+Add-CACRLDistributionPoint -Uri file://\\web01.corp.testlab.net\pki\TESTLAB-ECA%8%9.crl -PublishToServer -PublishDeltaToServer -Force
 
 # Adding the URL of the CRL that will be on all issued certificates.  This needs to be a highly-available publicly accessible URL.  Typing in this URL should prompt your internet browser to download the .crl.
 Write-Host "Adding the URL of the CRL that will be on all issued certificates" -ForegroundColor Green
-Add-CACRLDistributionPoint -Uri http://pki.paddylab.net/pki/PADDYLAB-ECA%8%9.crl -AddToCertificateCDP -AddToFreshestCrl -Force
+Add-CACRLDistributionPoint -Uri http://pki.testlab.net/pki/TESTLAB-ECA%8%9.crl -AddToCertificateCDP -AddToFreshestCrl -Force
 
 #  Gets all of the AIA paths (but not the default Windows system path) and deletes them.  They are also no good.
 Write-Host "Deleting all the AIA paths except the default Windows system path." -ForegroundColor Green
@@ -34,7 +34,7 @@ Get-CAAuthorityInformationAccess | where {$_.Uri -like '*ldap*' -or $_.Uri -like
 
 # Adding the URL of the AIA file that is on all issued certificates.  This also needs to be a highly-available publicly accessible URL.
 Write-Host "Adding the URL of the AIA file that is on all issued certificates." -ForegroundColor Green
-Add-CAAuthorityInformationAccess -AddToCertificateAia http://pki.paddylab.net/pki/PADDYLAB-ECA%3%4.crt -Force
+Add-CAAuthorityInformationAccess -AddToCertificateAia http://pki.testlab.net/pki/TESTLAB-ECA%3%4.crt -Force
 
 # Set CRL Settings
 
@@ -56,7 +56,7 @@ Restart-Service certsvc
 
 # Waiting for Certificate Service to restart
 WaitUntilServices "certsvc" "Running"
-Sleep -Seconds 30
+Start-Sleep -Seconds 30
 
 # Publishing new CRLs now that the above settings have been made
 Write-Host "Publishing new CRLs with the settings we have made."
