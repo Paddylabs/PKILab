@@ -35,6 +35,7 @@ This will fire up 4 VMs and configure them as follows:-
  * Creates a directory c:\PKI
  * Shares C:\PKI with Share name PKI
  * Copies PKI_IIS_Config.ps1 to the C:\Resources folder
+
 YOU NEED TO RUN PKI_IIS_Config.ps1 which does the following:-
  * Adds C:\PKI as a virtual Directory to the Default Web Site
  * Enables Directory Browsing for the virtual directory
