@@ -1,5 +1,7 @@
 # Windows Server 2016 PKI Lability Lab
 
+_This is a work in progress.  The lab works fine, I just need to finish updating the readMe / Instructions._
+
 Sometimes you want to lab something to learn the set up and configuration of a technology.  Other times you just need access to a preconfigured lab to test changing some settings or a new feature etc.
 
 If it's the former then building the lab step by step is obviously a better plan but if it's the latter you want as much of the build to be as automated as possible to get you to a working lab as quickly as can be. This project is about the latter.
@@ -26,16 +28,16 @@ This will fire up 4 VMs and configure them as follows:-
 
 #### DC01 - Domain Controller
 
-* Installs an Active Directory domain called corp.paddylab.net
+* Installs an Active Directory domain called corp.testlab.net
 * Creates an A Record in DNS for WEB01
 * Creates OUs for LAB Computers
 * Creates a User called User1 and places it in Domain and Enterprise Admins with a password of Password1
-* Creates a AD Intergrated DNS Forward Lookup Zone for paddylab.net
-* Creates a CNAME record in the paddylab.net zone that points to web01.corp.paddylab.net
+* Creates a AD Intergrated DNS Forward Lookup Zone for testlab.net
+* Creates a CNAME record in the testlab.net zone that points to web01.corp.testlab.net
 
 #### WEB01 - Web Server
 
-* Joins the computer to the corp.paddylab.net domain.
+* Joins the computer to the corp.testlab.net domain.
 * Install IIS
 * Creates a directory c:\PKI
 * Shares C:\PKI with Share name PKI
@@ -57,7 +59,7 @@ IS NOT JOINED TO THE DOMAIN
 
 #### SubCA01 - Enterprise Issuing CA
 
-* Joins to the corp.paddylab.net domain
+* Joins to the corp.testlab.net domain
 * Installs AD Certificate Services Role
 * Copies the file SubCA_CAPolicy.inf to c:\windows (This needs to be renamed later to capolicy.inf)
 * Copies Sub_CA_Config.inf and Sub_CA_Setup.inf to c:\resources
