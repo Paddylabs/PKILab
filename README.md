@@ -22,7 +22,7 @@ After opening PowerShell as Administrator and importing the Lability module run 
 This will fire up 4 VMs and configure them as follows:-
 
 # DC01 - Domain Controller
-..*Installs an Active Directory domain called corp.paddylab.net
+..* Installs an Active Directory domain called corp.paddylab.net
 Creates an A Record in DNS for WEB01
 Creates OUs for LAB Computers
 Creates a User called User1 and places it in Domain and Enterprise Admins with a password of Password1
