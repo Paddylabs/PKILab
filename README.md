@@ -34,7 +34,7 @@ This will fire up 4 VMs and configure them as follows:-
  * Install IIS
  * Creates a directory c:\PKI
  * Shares C:\PKI with Share name PKI
- * Copies PKI_IIS_Config.ps1 to the C:\Resources folder 
+ * Copies PKI_IIS_Config.ps1 to the C:\Resources folder
 YOU NEED TO RUN PKI_IIS_Config.ps1 which does the following:-
  * Adds C:\PKI as a virtual Directory to the Default Web Site
  * Enables Directory Browsing for the virtual directory
@@ -45,7 +45,7 @@ IS NOT JOINED TO THE DOMAIN
  * Installs AD Certificate Services role
  * Creates file capolicy.inf in c:\windows\ (this contains settings required before installing a CA)
  * Copies Root_CA_Setup.ps1 and Root_CA_Config.ps1 to c:\resources
-YOU NEED TO RUN ROOT_CA_SETUP.ps1 which does the following:-
+ YOU NEED TO RUN ROOT_CA_SETUP.ps1 which does the following:- 
  * Installs an Offline Root CA using the settings in the script (also depends on the capolicy.inf file)
 YOU NEED TO RUN ROOT_CA_Config.ps1 which does the following:-
  * Configures the Offline Root CA as per our settings in the file.
