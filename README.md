@@ -23,35 +23,35 @@ This will fire up 4 VMs and configure them as follows:-
 
 # DC01 - Domain Controller
  * Installs an Active Directory domain called corp.paddylab.net
-Creates an A Record in DNS for WEB01
-Creates OUs for LAB Computers
-Creates a User called User1 and places it in Domain and Enterprise Admins with a password of Password1
-Creates a AD Intergrated DNS Forward Lookup Zone for paddylab.net
-Creates a CNAME record in the paddylab.net zone that points to we01.corp.paddylab.net
+ * Creates an A Record in DNS for WEB01
+ * Creates OUs for LAB Computers
+ * Creates a User called User1 and places it in Domain and Enterprise Admins with a password of Password1
+ * Creates a AD Intergrated DNS Forward Lookup Zone for paddylab.net
+ * Creates a CNAME record in the paddylab.net zone that points to we01.corp.paddylab.net
 
 # WEB01 - Web Server
-Joins the computer to the corp.paddylab.net domain.
-Install IIS
-Creates a directory c:\PKI
-Shares C:\PKI with Share name PKI
-Copies PKI_IIS_Config.ps1 to the C:\Resources folder
+ * Joins the computer to the corp.paddylab.net domain.
+ * Install IIS
+ * Creates a directory c:\PKI
+ * Shares C:\PKI with Share name PKI
+ * Copies PKI_IIS_Config.ps1 to the C:\Resources folder
 YOU NEED TO RUN PKI_IIS_Config.ps1 which does the following:-
-Adds C:\PKI as a virtual Directory to the Default Web Site
-Enables Directory Browsing for the virtual directory
-Enabled Double Escaping for the virtual directory (because some of the file names will end with +)
+ * Adds C:\PKI as a virtual Directory to the Default Web Site
+ * Enables Directory Browsing for the virtual directory
+ * Enables Double Escaping for the virtual directory (because some of the file names will end with +)
 
 # RootCA - Offline Root CA
 IS NOT JOINED TO THE DOMAIN
-Installs AD Certificate Services role
-Creates file capolicy.inf in c:\windows\ (this contains settings required before installing a CA)
-Copies Root_CA_Setup.ps1 and Root_CA_Config.ps1 to c:\resources
+ * Installs AD Certificate Services role
+ * Creates file capolicy.inf in c:\windows\ (this contains settings required before installing a CA)
+ * Copies Root_CA_Setup.ps1 and Root_CA_Config.ps1 to c:\resources
 YOU NEED TO RUN ROOT_CA_SETUP.ps1 which does the following:-
-Installs an Offline Root CA using the settings in the script (also depends on the capolicy.inf file)
-YOU NEED TO RUN ROOT_CA_Config.ps1 which does the following:-
-Configures the Offline Root CA as per our settings in the file.
+ * Installs an Offline Root CA using the settings in the script (also depends on the capolicy.inf file)
+ * YOU NEED TO RUN ROOT_CA_Config.ps1 which does the following:-
+ * Configures the Offline Root CA as per our settings in the file.
 
 # SubCA01 - Enterprise Issuing CA
-Joins to the corp.paddylab.net domain
-Installs AD Certificate Services Role
-Copies the file SubCA_CAPolicy.inf to c:\windows (This needs to be renamed later to capolicy.inf)
-Copies Sub_CA_Config.inf and Sub_CA_Setup.inf to c:\resources
+ * Joins to the corp.paddylab.net domain
+ * Installs AD Certificate Services Role
+ * Copies the file SubCA_CAPolicy.inf to c:\windows (This needs to be renamed later to capolicy.inf)
+ * Copies Sub_CA_Config.inf and Sub_CA_Setup.inf to c:\resources
