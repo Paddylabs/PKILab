@@ -15,13 +15,13 @@ This ReadMe *may* cover some of the reasoning behind why the PKI is configured t
 ## Disclaimer:
 Feel free to copy and use this for your own purposes but just remember it is a _LAB_. I do try and follow best practice where ever possible or is practical but as it is a lab I haven't gone to the nth degree like configuring RBAC for example.  I am also very much 'standing on the shoulders of giants' when it comes to PowerShell and DSC so every day is a school day for me and you should not view this project as me telling you the best way to do this, it's just how I've managed to acheive it using a combination of knowledge I already had and learning new skills along the way. I am publishing it to GitHub as a place to store and version control the project for me but if it helps anybody else along the way then happy days.
 
-### Instructions
+## Instructions
 
 After opening PowerShell as Administrator and importing the Lability module run PKILab.ps1.
 
 This will fire up 4 VMs and configure them as follows:-
 
-# DC01 - Domain Controller
+### DC01 - Domain Controller
  * Installs an Active Directory domain called corp.paddylab.net
  * Creates an A Record in DNS for WEB01
  * Creates OUs for LAB Computers
@@ -29,7 +29,7 @@ This will fire up 4 VMs and configure them as follows:-
  * Creates a AD Intergrated DNS Forward Lookup Zone for paddylab.net
  * Creates a CNAME record in the paddylab.net zone that points to we01.corp.paddylab.net
 
-# WEB01 - Web Server
+### WEB01 - Web Server
  * Joins the computer to the corp.paddylab.net domain.
  * Install IIS
  * Creates a directory c:\PKI
@@ -41,7 +41,7 @@ YOU NEED TO RUN PKI_IIS_Config.ps1 which does the following:-
  * Enables Directory Browsing for the virtual directory
  * Enables Double Escaping for the virtual directory (because some of the file names will end with +)
 
-# RootCA - Offline Root CA
+### RootCA - Offline Root CA
 IS NOT JOINED TO THE DOMAIN
  * Installs AD Certificate Services role
  * Creates file capolicy.inf in c:\windows\ (this contains settings required before installing a CA)
@@ -53,7 +53,7 @@ YOU NEED TO RUN ROOT_CA_SETUP.ps1 which does the following:-
 YOU NEED TO RUN ROOT_CA_Config.ps1 which does the following:-
  * Configures the Offline Root CA as per our settings in the file.
 
-# SubCA01 - Enterprise Issuing CA
+### SubCA01 - Enterprise Issuing CA
  * Joins to the corp.paddylab.net domain
  * Installs AD Certificate Services Role
  * Copies the file SubCA_CAPolicy.inf to c:\windows (This needs to be renamed later to capolicy.inf)
