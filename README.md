@@ -12,17 +12,19 @@ What it won't cover is how DSC works or the setting up and configuring of Labili
 
 This ReadMe *may* cover some of the reasoning behind why the PKI is configured the way it is.  A lot of these configurations are neither right nor wrong for me, they may be right or wrong for **YOUR** needs though, each installation would have its own requirements that may change how you go about configuring **YOUR PKI**. Again, there are plenty of good blog posts out there already that explain how and why you might make these configuration decisions.
 
-## Disclaimer:
+## Disclaimer
 
 Feel free to copy and use this for your own purposes but just remember it is a _LAB_. I do try and follow best practice where ever possible or is practical but as it is a lab I haven't gone to the nth degree like configuring RBAC for example.  I am also very much 'standing on the shoulders of giants' when it comes to PowerShell and DSC so every day is a school day for me and you should not view this project as me telling you the best way to do this, it's just how I've managed to acheive it using a combination of knowledge I already had and learning new skills along the way. I am publishing it to GitHub as a place to store and version control the project for me but if it helps anybody else along the way then happy days.
 
 ## Instructions
 
+### Deploy the Lab
+
 After opening PowerShell as Administrator and importing the Lability module run PKILab.ps1.
 
 This will fire up 4 VMs and configure them as follows:-
 
-### DC01 - Domain Controller
+#### DC01 - Domain Controller
 
 * Installs an Active Directory domain called corp.paddylab.net
 * Creates an A Record in DNS for WEB01
@@ -31,7 +33,7 @@ This will fire up 4 VMs and configure them as follows:-
 * Creates a AD Intergrated DNS Forward Lookup Zone for paddylab.net
 * Creates a CNAME record in the paddylab.net zone that points to web01.corp.paddylab.net
 
-### WEB01 - Web Server
+#### WEB01 - Web Server
 
 * Joins the computer to the corp.paddylab.net domain.
 * Install IIS
@@ -45,7 +47,7 @@ YOU NEED TO RUN PKI_IIS_Config.ps1 which does the following:-
 * Enables Directory Browsing for the virtual directory
 * Enables Double Escaping for the virtual directory (because some of the file names will end with +)
 
-### RootCA - Offline Root CA
+#### RootCA - Offline Root CA
 
 IS NOT JOINED TO THE DOMAIN
 
@@ -53,17 +55,27 @@ IS NOT JOINED TO THE DOMAIN
 * Creates file capolicy.inf in c:\windows\ (this contains settings required before installing a CA)
 * Copies Root_CA_Setup.ps1 and Root_CA_Config.ps1 to c:\resources
 
-YOU NEED TO RUN ROOT_CA_SETUP.ps1 which does the following:-
-
-* Installs an Offline Root CA using the settings in the script (also depends on the capolicy.inf file)
-
-YOU NEED TO RUN ROOT_CA_Config.ps1 which does the following:-
-
-* Configures the Offline Root CA as per our settings in the file.
-
-### SubCA01 - Enterprise Issuing CA
+#### SubCA01 - Enterprise Issuing CA
 
 * Joins to the corp.paddylab.net domain
 * Installs AD Certificate Services Role
 * Copies the file SubCA_CAPolicy.inf to c:\windows (This needs to be renamed later to capolicy.inf)
 * Copies Sub_CA_Config.inf and Sub_CA_Setup.inf to c:\resources
+
+### Configure the Lab
+
+Its best to wait for all VMs to finish deploying.
+
+#### On ROOTCA01
+
+Run ROOT_CA_SETUP.ps1 with Admin privilages which does the following:-
+
+* Installs an Offline Root CA using the settings in the script. (also depends on the capolicy.inf file)
+
+Review the settings in the script so you can see how the Offline Root is being installed and with what configurations. Some of these settings will vary depending on the requirements of your PKI and some are always required.
+
+Run ROOT_CA_Config.ps1 with Admin privilages which does the following:-
+
+* Configures the Offline Root CA as per our settings in the Script.
+
+Review the settings in the script so you can see how the Offline Root is being installed and with what configurations. Some of these settings will vary depending on the requirements of your PKI and some are always required.
