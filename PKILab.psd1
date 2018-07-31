@@ -115,21 +115,21 @@
                     Id = 'Root_CAPolicy'
                     Filename = 'CAPolicy.inf'
                     DestinationPath = '\Windows'
-                    Uri = 'file://C:\Lability\Resources\PKI\RootCA\Root_CAPolicy.inf'
+                    Uri = 'file://C:\Lability\Configurations\PKI_Lab\Root_CAPolicy.inf'
 
                     }
 
                 @{
                     Id = 'Root_CASetup'
                     Filename = 'Root_CA_Setup.ps1'
-                    Uri = 'file://C:\Lability\Resources\PKI\RootCA\Root_CA_Setup.ps1'
+                    Uri = 'file://C:\Lability\Configurations\PKI_Lab\Root_CA_Setup.ps1'
 
                     }
 
                  @{
                     Id = 'Root_CAConfig'
                     Filename = 'Root_CA_Config.ps1'
-                    Uri = 'file://C:\Lability\Resources\PKI\RootCA\Root_CA_Config.ps1'
+                    Uri = 'file://C:\Lability\Configurations\PKI_Lab\Root_CA_Config.ps1'
 
                     }
 
@@ -137,21 +137,21 @@
                     Id = 'Sub_CAPolicy'
                     Filename = 'Sub_CAPolicy.inf'
                     DestinationPath = '\Windows'
-                    Uri = 'file://C:\Lability\Resources\PKI\SubCA\SubCA_CAPolicy.inf'
+                    Uri = 'file://C:\Lability\Configurations\PKI_Lab\SubCA_CAPolicy.inf'
 
                     }
 
                 @{
                     Id = 'Sub_CASetup'
                     Filename = 'Sub_CA_Setup.ps1'
-                    Uri = 'file://C:\Lability\Resources\PKI\SubCA\Sub_CA_Setup.ps1'
+                    Uri = 'file://C:\Lability\Configurations\PKI_Lab\Sub_CA_Setup.ps1'
 
                     }
 
                  @{
                     Id = 'Sub_CAConfig'
                     Filename = 'Sub_CA_Config.ps1'
-                    Uri = 'file://C:\Lability\Resources\PKI\SubCA\Sub_CA_Config.ps1'
+                    Uri = 'file://C:\Lability\Configurations\PKI_Lab\Sub_CA_Config.ps1'
 
                     }
 
@@ -159,7 +159,7 @@
                 @{
                     Id = 'PKI_IIS_Config'
                     Filename = 'PKI_IIS_Config.ps1'
-                    Uri = 'file://C:\Lability\Resources\PKI\Web\PKI_IIS_Config.ps1'
+                    Uri = 'file://C:\Lability\Configurations\PKI_Lab\PKI_IIS_Config.ps1'
 
                     }
 
