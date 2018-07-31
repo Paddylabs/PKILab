@@ -1,0 +1,15 @@
+[Version]
+Signature="$Windows NT$"
+
+[PolicyStatementExtension]
+Policies=InternalPolicy
+
+[InternalPolicy]
+OID=1.1.1.1
+URL=http://pki.paddylab.net/pki/cps.html
+
+[Certsrv_Server]
+RenewalKeyLength=4096
+RenewalValidityPeriod=Years
+RenewalValidityPeriodUnits=5
+LoadDefaultTemplates=0
